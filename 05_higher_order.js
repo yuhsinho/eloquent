@@ -43,4 +43,9 @@ function textScripts(text) {
   }).join(", ");
 }
 
-export { characterScript };
+module.exports = {
+  repeat,
+  characterScript,
+  countBy,
+  textScripts
+}

@@ -1,4 +1,5 @@
-var SCRIPTS = require('/Users/yuhsinho/eloquent/scripts.js');
+var SCRIPTS = require('./scripts');
+var mymodule = require('./05_higher_order');
 // Dominant writing direction
 
 function dominantDirection(text) {
@@ -9,7 +10,7 @@ function dominantDirection(text) {
         dir.push(characterScript(code).direction);
       }  
     } 
-    let array = countBy(dir, n => n == 'ltr');
+    let array = mymodule.countBy(dir, n => n == 'ltr');
     let result = array.reduce((a,b) => a.count > b.count ? a.name : b.name);
     if (result) return 'ltr'
     return 'rtl';
@@ -33,16 +34,16 @@ function dominantDirection(text) {
   }
   
 
-  function countBy(items, groupName) {
-    let counts = [];
-    for (let item of items) {
-      let name = groupName(item);
-      let known = counts.findIndex(c => c.name == name);
-      if (known == -1) {
-        counts.push({name, count: 1});
-      } else {
-        counts[known].count++;
-      }
-    }
-    return counts;
-  }
+  // function countBy(items, groupName) {
+  //   let counts = [];
+  //   for (let item of items) {
+  //     let name = groupName(item);
+  //     let known = counts.findIndex(c => c.name == name);
+  //     if (known == -1) {
+  //       counts.push({name, count: 1});
+  //     } else {
+  //       counts[known].count++;
+  //     }
+  //   }
+  //   return counts;
+  // }
